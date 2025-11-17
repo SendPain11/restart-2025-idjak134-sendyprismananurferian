@@ -1,8 +1,8 @@
-# 1. Import modul yang diperlukan
+# mport modul yang diperlukan
 import csv
 import copy
 
-# 2. Definisikan kerangka (schema) untuk kendaraan. 
+# Definisikan kerangka (schema) untuk kendaraan. 
 # Ini adalah Dictionary kosong sebagai template.
 myVehicle = {
     "vin" : "<empty>",
@@ -19,10 +19,10 @@ myVehicle = {
 for key, value in myVehicle.items():
     print("{} : {}".format(key,value))
 
-# 3. Buat List kosong untuk menampung semua data mobil nantinya
+# Buat List kosong untuk menampung semua data mobil nantinya
 myInventoryList = []
 
-# 4. Membaca file CSV dan memasukkannya ke dalam memory
+# Membaca file CSV dan memasukkannya ke dalam memory
 with open('car_fleet.csv') as csvFile:
     csvReader = csv.reader(csvFile, delimiter=',')  
     lineCount = 0  
@@ -38,7 +38,8 @@ with open('car_fleet.csv') as csvFile:
             
             # PENTING: Membuat salinan mendalam (Deep Copy) dari template myVehicle
             # Agar setiap mobil punya "kotak penyimpanan" sendiri di memori.
-            currentVehicle = copy.deepcopy(myVehicle)  
+            currentVehicle = copy.deepcopy(myVehicle)  #pakai deepcopy untuk nested object tapi disini pakai copy.copy disini sudah aman sebenarnya
+            # currentVehicle = copy.copy(myVehicle) # ini bisa dipakai disini tapi lab memberikan default ke deepcopy
             
             # Mengisi data ke dalam dictionary sementara
             currentVehicle["vin"] = row[0]  
@@ -55,11 +56,20 @@ with open('car_fleet.csv') as csvFile:
             lineCount += 1  
             
     print(f'Processed {lineCount} lines.')
+    
+print(myInventoryList)
 
-# 5. Mencetak hasil akhir dari List Inventory
+# Mencetak hasil akhir dari List Inventory
 print("-----------------")
 print("Printing Inventory:")
 for myCarProperties in myInventoryList:
     for key, value in myCarProperties.items():
         print("{} : {}".format(key,value))
     print("-----")
+    
+    
+    
+##### Penjelasan #####
+# copy (copy biasa) dengan library copy= digunakan untuk int, string, bool, float
+
+# Copy.deepcopy (copy istimewa) dengan library copy = digunakan untuk kasus variable dengan tipe : list, tuple, dictionary yang bersifat nested/complex (composite di dalam composite)
