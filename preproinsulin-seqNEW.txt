@@ -1,0 +1,10 @@
+ORIGIN      
+        1 agccctccag gacaggctgc atcagaagag gccatcaagc agatcactgt ccttctgcca
+       61 tggccctgtg gatgcgcctc ctgcccctgc tggcgctgct ggccctctgg ggacctgacc
+      121 cagccgcagc ctttgtgaac caacacctgt gcggctcaca cctggtggaa gctctctacc
+      181 tagtgtgcgg ggaacgaggc ttcttctaca cacccaagac ccgccgggag gcagaggacc
+      241 tgcaggtggg gcaggtggag ctgggcgggg gccctggtgc aggcagcctg cagcccttgg
+      301 ccctggaggg gtccctgcag aagcgtggca ttgtggaaca atgctgtacc agcatctgct
+      361 ccctctacca gctggagaac tactgcaact agacgcagcc cgcaggcagc cccacacccg
+      421 ccgcctcctg caccgagaga gatggaataa agcccttgaa ccagc
+//
