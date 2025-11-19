@@ -52,6 +52,9 @@ print(preproInsulin)
 # Menggunakan variabel aInsulin yang diambil dari file
 print("The sequence of human insulin, chain a: " + aInsulin)
 
+# Memanggil Insulin yang gabungan dari A dan B
+print("The sequence of human insulin: {}".format(insulin))
+
 # --- BAGIAN 3: PERHITUNGAN BERAT MOLEKUL ---
 
 # Daftar berat asam amino
