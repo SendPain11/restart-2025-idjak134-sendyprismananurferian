@@ -1,40 +1,46 @@
 import sys
+import os
 
-# --- FUNGSI PEMBANTU (HELPER FUNCTION) ---
-def baca_file_dengan_status(nama_file):
+# --- KONFIGURASI FOLDER ---
+folder_sumber = "result"
+
+# --- FUNGSI PEMBANTU (VERSI IF/ELSE) ---
+def baca_file_dari_result(nama_file):
     """
-    Mencoba membaca file. 
-    Jika ada: print SUKSES dan kembalikan isinya.
-    Jika tidak ada: print GAGAL dan kembalikan None.
+    Mencoba membaca file dari folder 'result' menggunakan pengecekan IF.
     """
-    try:
-        with open(nama_file, "r") as f:
+    # Menggabungkan nama folder dan nama file
+    path_lengkap = os.path.join(folder_sumber, nama_file)
+    
+    # [UBAHAN UTAMA] Menggunakan IF os.path.exists daripada Try-Except
+    if os.path.exists(path_lengkap):
+        # Jika file ADA, maka buka dan baca
+        with open(path_lengkap, "r") as f:
             isi = f.read().strip()
-            # INI YANG ANDA MINTA: Konfirmasi visual
-            print(f"[BERHASIL] File '{nama_file}' ditemukan & dimuat.")
+            print(f"[BERHASIL] File '{path_lengkap}' ditemukan & dimuat.")
             return isi
-    except FileNotFoundError:
-        print(f"[GAGAL] ❌ File '{nama_file}' TIDAK ditemukan!")
+    else:
+        # Jika file TIDAK ADA (Else), cetak pesan gagal
+        print(f"[GAGAL] ❌ File '{path_lengkap}' TIDAK ditemukan! Cek apakah file sudah dibuat.")
         return None
 
 # --- BAGIAN 1: MEMUAT VARIABEL ---
-print("--- MEMULAI PROSES LOAD DATA ---")
+print(f"--- MEMULAI PROSES LOAD DATA DARI FOLDER '{folder_sumber}' ---")
 
-preproInsulin = baca_file_dengan_status("preproinsulin-seq-clean.txt")
-lsInsulin = baca_file_dengan_status("lsinsulin-seq-clean.txt")
-bInsulin = baca_file_dengan_status("binsulin-seq-clean.txt")
-aInsulin = baca_file_dengan_status("ainsulin-seq-clean.txt")
-cInsulin = baca_file_dengan_status("cinsulin-seq-clean.txt")
+preproInsulin = baca_file_dari_result("preproinsulin-seq-clean.txt")
+lsInsulin = baca_file_dari_result("lsinsulin-seq-clean.txt")
+bInsulin = baca_file_dari_result("binsulin-seq-clean.txt")
+aInsulin = baca_file_dari_result("ainsulin-seq-clean.txt")
+cInsulin = baca_file_dari_result("cinsulin-seq-clean.txt")
 
 print("--------------------------------\n")
 
 # Pengecekan Keamanan: Jika ada satu saja file yang gagal, program berhenti.
-# Agar tidak error saat perhitungan matematika di bawah.
 if None in [preproInsulin, lsInsulin, bInsulin, aInsulin, cInsulin]:
-    print("CRITICAL ERROR: Data tidak lengkap. Periksa file .txt Anda.")
+    print("CRITICAL ERROR: Data tidak lengkap. Periksa folder 'result' Anda.")
     sys.exit() # Menghentikan program
 
-# --- BAGIAN 2: LOGIKA PROGRAM (LAB ORIGIN) ---
+# --- BAGIAN 2: LOGIKA PROGRAM (SAMA SEPERTI SEBELUMNYA) ---
 
 # Menggabungkan rantai B dan A
 insulin = bInsulin + aInsulin
