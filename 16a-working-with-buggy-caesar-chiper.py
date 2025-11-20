@@ -25,14 +25,8 @@ def encryptMessage(message, cipherKey, alphabet):
     uppercaseMessage = message.upper()
     for currentCharacter in uppercaseMessage:
         position = alphabet.find(currentCharacter)
-        
-        ## OLD (Buggy)
-        ## PROBLEM NYA ADA DISINI di bagian newPosition = position + cipherkey --> MAKA SAYA AKAN JAWAB DI BAWAHNYA YANG SESUAI!!!
         # newPosition = position + cipherKey
-        ## NEW (Fixed)
-        ## Kode mencoba menambahkan position (int) ke cipherKey (string). Masukan dari input() selalu berupa string.
         newPosition = position + int(cipherKey)
-        
         if currentCharacter in alphabet:
             encryptedMessage = encryptedMessage + alphabet[newPosition]
         else:

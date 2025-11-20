@@ -38,7 +38,8 @@ def decryptMessage(message, cipherKey, alphabet):
     ## OLD (Buggy)
     """
     Masalah nya ada dibawah ini Dalam decryptMessage, decryptKey dihitung dengan benar (-1 * int(cipherKey)), 
-    tetapi kemudian fungsi tersebut secara tidak sengaja meneruskan cipherKey (original positive key) ke encryptMessage alih-alih decryptKey.
+    tetapi kemudian fungsi tersebut secara tidak sengaja meneruskan cipherKey (original positive key) 
+    ke encryptMessage alih-alih decryptKey.
     """
     # return encryptMessage(message, cipherKey, alphabet)
     ## NEW (Fixed)
